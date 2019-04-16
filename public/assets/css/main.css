@@ -1,4 +1,4 @@
-@import url(font-awesome.min.css);
+/* @import url(font-awesome.min.css); */
 @import url("https://fonts.googleapis.com/css?family=Raleway|Montserrat:700");
 
 /*
@@ -315,10 +315,12 @@ sup {
 }
 
 blockquote {
-  border-left: solid 4px #cccccc;
+  border: solid 1px #ffffff;
   font-style: italic;
+  border-radius: 10px;
   margin: 0 0 2em 0;
-  padding: 0.5em 0 0.5em 2em;
+  box-shadow: #c1c1bc 5px 5px 10px;
+  padding: 0.5em 0 0.5em 0.5em;
 }
 
 code {
@@ -783,6 +785,7 @@ ul li {
 ul.alt {
   list-style: none;
   padding-left: 0;
+  margin: 0;
 }
 
 ul.alt li {
@@ -1601,4 +1604,30 @@ body.is-loading-1 .panel>.content {
 
 body.is-loading-0 #footer {
   opacity: 0;
+}
+
+/* Ro */
+.stick-right {
+  position: absolute;
+  right: 12%;
+  display: inline-block
+}
+
+.stick-right-icon {
+  position: absolute;
+  right: 20%;
+  display: inline-block
+}
+
+.p-margin {
+  display: inline;
+  margin-left: 0.5em;
+}
+
+.tbspr {
+  padding-right: 25px;
+}
+
+.tbspl {
+  padding-left: 25px;
 }

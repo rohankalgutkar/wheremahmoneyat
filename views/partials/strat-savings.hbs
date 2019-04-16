@@ -1,17 +1,36 @@
 <article id="strat-savings" class="panel ">
     <div class="content">
-        {{> back-button}}
         <div class="inner">
             <header>
                 <h2>Strategic Savings</h2>
-                <h4> Total: ₹ {{#if strat_savings.no_strat_savings}}0{{/if}}</h4>
+                <h4> Count: # {{#if strat_savings.no_strat_savings}}0{{/if}} Total: ₹
+                    {{#if strat_savings.no_strat_savings}}0{{/if}}</h4>
             </header>
+
+            <blockquote>
+                <ul class="alt">
+                    <li> <span class="fas fa-piggy-bank"></span>
+                        <p class="p-margin"> Dad's Repayment</p>
+                        <div class="stick-right">
+                            <span class="fas fa-money-bill-wave"></span> ₹50,000</div>
+                    </li>
+                    <li> <span class="fas fa-hand-holding-usd"></span>
+                        <p class="p-margin"> ₹5000</p>
+                        <span class="tbspl fas fa-comment-dollar"></span> ₹45,000
+                        <div class="stick-right">
+                            <span class="tbspl fas fa-hashtag"></span> 1
+                            <span class="p-margin fas fa-chart-line"></span> 9
+                        </div>
+                    </li>
+                </ul>
+            </blockquote>
 
             {{#if strat_savings.no_strat_savings}}
             <p><span class="fas fa-exclamation-circle"></span> You have no Strategic Savings set up.</p>
             {{/if}}
 
             <ul class="actions">
+                <li><a href="#home" class="button small"><span class="fas fa-arrow-left"></span> Back</a></li>
                 <li><a href="#add-new-strat-saving" class="button small"><span class="fas fa-plus"> </span> Add New</a>
                 </li>
             </ul>
@@ -26,6 +45,7 @@
             <li><a href="#strat-savings" class="button small"><span class="fas fa-arrow-left"></span> Back</a></li>
             <li><a href="#home" class="button small"><span class="fas fa-home"> </span> Dash</a></li>
         </ul>
+
         <header>
             <h3>Add New <br> Strategic Saving</h3>
         </header>
