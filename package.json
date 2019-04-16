@@ -1,0 +1,23 @@
+{
+  "name": "wheremahmoneyat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rohankalgutkar/wheremahmoneyat.git"
+  },
+  "author": "Rohan Kalgutkar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rohankalgutkar/wheremahmoneyat/issues"
+  },
+  "homepage": "https://github.com/rohankalgutkar/wheremahmoneyat#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-hbs": "^2.1.2"
+  }
+}

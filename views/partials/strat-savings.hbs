@@ -1,0 +1,51 @@
+<article id="strat-savings" class="panel ">
+    <div class="content">
+        {{> back-button}}
+        <div class="inner">
+            <header>
+                <h2>Strategic Savings</h2>
+                <h4> Total: ₹ {{#if strat_savings.no_strat_savings}}0{{/if}}</h4>
+            </header>
+
+            {{#if strat_savings.no_strat_savings}}
+            <p><span class="fas fa-exclamation-circle"></span> You have no Strategic Savings set up.</p>
+            {{/if}}
+
+            <ul class="actions">
+                <li><a href="#add-new-strat-saving" class="button small"><span class="fas fa-plus"> </span> Add New</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</article>
+
+<article id="add-new-strat-saving" class="panel">
+    <div class="content">
+        <ul class="actions">
+            <li><a href="#strat-savings" class="button small"><span class="fas fa-arrow-left"></span> Back</a></li>
+            <li><a href="#home" class="button small"><span class="fas fa-home"> </span> Dash</a></li>
+        </ul>
+        <header>
+            <h3>Add New <br> Strategic Saving</h3>
+        </header>
+
+        <form method="post" action="/add-strat-saving">
+            <div class="field half first">
+                <label for="name">Goal Name</label>
+                <input type="text" name="goal_name" id="goal_name" />
+            </div>
+            <div class="field half">
+                <label for="goal_amount">Goal Amount</label>
+                <input type="text" name="goal_amount" id="goal_amount" />
+            </div>
+            <div class="field half">
+                <label for="init_amount">Initial Amount</label>
+                <input type="text" name="init_amount" id="init_amount" />
+            </div>
+            <ul class="actions">
+                <li><a href="" class="button submit"><span class="fas fa-save"> </span> Save</a></li>
+            </ul>
+        </form>
+    </div>
+</article>
