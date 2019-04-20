@@ -3,11 +3,20 @@
         <div class="inner">
             <header>
                 <h2>Strategic Savings</h2>
-                <h4> Count: # {{#if strat_savings.no_strat_savings}}0{{/if}} Total: ₹
-                    {{#if strat_savings.no_strat_savings}}0{{/if}}</h4>
+                <h4> Count: # {{#if strat_savings_count}}{{strat_savings_count}}{{else}}0{{/if}}
+                    Total: ₹
+                    {{#if strat_savings_total}}
+                    {{strat_savings_total}}
+                    {{else}}0
+                    {{/if}}
+                </h4>
             </header>
 
-            <blockquote>
+            {{#unless strat_savings_total}}
+            <p><span class="fas fa-exclamation-circle"></span> You have no Strategic Savings set up.</p>
+            {{/unless}}
+
+            {{!-- <blockquote>
                 <ul class="alt">
                     <li> <span class="fas fa-piggy-bank"></span>
                         <p class="p-margin"> Dad's Repayment</p>
@@ -23,11 +32,10 @@
                         </div>
                     </li>
                 </ul>
-            </blockquote>
+            </blockquote> --}}
 
-            {{#if strat_savings.no_strat_savings}}
-            <p><span class="fas fa-exclamation-circle"></span> You have no Strategic Savings set up.</p>
-            {{/if}}
+            {{#stratSavingsData strat_savings_data}}{{/stratSavingsData}}
+
 
             <ul class="actions">
                 <li><a href="#home" class="button small"><span class="fas fa-arrow-left"></span> Back</a></li>
@@ -60,12 +68,24 @@
                 <input type="text" name="goal_amount" id="goal_amount" />
             </div>
             <div class="field half">
-                <label for="init_amount">Initial Amount</label>
-                <input type="text" name="init_amount" id="init_amount" />
+                <label for="current_amount">Initial Amount</label>
+                <input type="text" name="current_amount" id="current_amount" />
             </div>
-            <ul class="actions">
-                <li><a href="" class="button submit"><span class="fas fa-save"> </span> Save</a></li>
-            </ul>
+            <div class="field half form-btn">
+                <button type="submit"><span class="fas fa-save"> </span> Save
+                </button>
+            </div>
         </form>
+    </div>
+</article>
+
+<article id="strat-saving-okay" class="panel">
+    <div class="content">
+        <header>
+            <h3>Success</h3>
+        </header>
+        <ul class="actions">
+            <li><a href="#strat-savings" class="button small"><span class="fas fa-check"></span> Okay</a></li>
+        </ul>
     </div>
 </article>

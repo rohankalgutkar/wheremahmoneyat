@@ -316,9 +316,9 @@ sup {
 
 blockquote {
   border: solid 1px #ffffff;
-  font-style: italic;
+  /* font-style: italic; */
   border-radius: 10px;
-  margin: 0 0 2em 0;
+  margin: 0 0 1.25em 0;
   box-shadow: #c1c1bc 5px 5px 10px;
   padding: 0.5em 0 0.5em 0.5em;
 }
@@ -1630,4 +1630,12 @@ body.is-loading-0 #footer {
 
 .tbspl {
   padding-left: 25px;
+}
+
+.form-btn {
+  text-align: center;
+}
+
+.form-btn button {
+  min-width: 50%;
 }
