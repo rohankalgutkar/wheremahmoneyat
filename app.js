@@ -29,7 +29,7 @@ app.get('/', function (req, res) {
         var stratSavingsHeader = StrategicSaving.getStratSavingsHeader(stratSavingsData);
 
         res.render('index', {
-            currentYear: new Date().getFullYear(),
+            currentYear: new Date().getFullYear() + 1,
             strat_savings_total: stratSavingsHeader.totalStratSavings,
             strat_savings_count: stratSavingsHeader.stratSavingsCount,
             strat_savings_data: stratSavingsData
