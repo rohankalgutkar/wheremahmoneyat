@@ -10,6 +10,7 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
 app.engine('hbs', hbs.express4({
     partialsDir: __dirname + '/views/partials'
 }));
@@ -20,6 +21,23 @@ hbs.registerHelper('stratSavingsData', function (strat_savings_data) {
     return StrategicSaving.generateStratSavingOutput(strat_savings_data);
 });
 
+
+
+// app.post('/login',
+//     passport.authenticate('local', {
+//         successRedirect: '/',
+//         failureRedirect: '/login'
+//         // failureFlash: true
+//     })
+// );
+
+app.get('/login', function (req, res) {
+    res.render('login', {
+        currentYear: new Date().getFullYear()
+    })
+})
+
+
 app.get('/', function (req, res) {
     var stratSavings = StrategicSaving.getStratSavings();
     stratSavings.then((stratSavingsData) => {
@@ -29,7 +47,7 @@ app.get('/', function (req, res) {
         var stratSavingsHeader = StrategicSaving.getStratSavingsHeader(stratSavingsData);
 
         res.render('index', {
-            currentYear: new Date().getFullYear() + 1,
+            currentYear: new Date().getFullYear(),
             strat_savings_total: stratSavingsHeader.totalStratSavings,
             strat_savings_count: stratSavingsHeader.stratSavingsCount,
             strat_savings_data: stratSavingsData
@@ -37,9 +55,7 @@ app.get('/', function (req, res) {
     }).catch((e) => {
         console.log('Didnt work' + e);
     });
-
-
-})
+});
 
 // Strategic Savings
 app.post('/add-strat-saving', function (req, res) {

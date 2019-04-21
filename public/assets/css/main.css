@@ -436,6 +436,10 @@ form>.fields {
 	margin: -1.5rem 0 2rem -1.5rem;
 }
 
+.form-login>.fields {
+	margin: 0
+}
+
 form>.fields>.field {
 	-moz-flex-grow: 0;
 	-webkit-flex-grow: 0;
@@ -474,7 +478,7 @@ form>.fields>.field.quarter {
 	}
 
 	form>.fields>.field.half {
-		width: calc(100% - 1.5rem);
+		width: calc(100% - 4.5rem);
 	}
 
 	form>.fields>.field.third {
@@ -502,6 +506,7 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="tel"],
+input[type="submit"],
 select,
 textarea {
 	-moz-appearance: none;
