@@ -26,21 +26,21 @@
     <section style="margin-top: 1rem">
         <form method="post" action="/add-account">
             <div class="fields">
-                <div class="field half first">
+                <div class="field first">
                     <label for="name">Account Name</label>
                     <input type="text" name="acc_name" id="acc_name" />
                 </div>
-                <div class="field half">
+                <div class="field">
                     <label for="current_amount">Initial Amount</label>
                     <input type="text" name="current_amount" id="current_amount" />
                 </div>
                 <div class="field half">
-                    <input type="radio" value="liquid" id="acc_type" name="acc_type" checked="">
-                    <label for="liquid">Liquid</label>
+                    <input type="radio" id="acc_type_liq" name="acc_type" value="liquid" checked>
+                    <label for="acc_type_liq">Liquid</label>
                 </div>
                 <div class="field half">
-                    <input type="radio" value="fixed" id="acc_type" name="acc_type">
-                    <label for="fixed">Fixed</label>
+                    <input type="radio" id="acc_type_fix" name="acc_type" value="fixed">
+                    <label for="acc_type_fix">Fixed</label>
                 </div>
                 <div class="field half form-btn">
                     <button type="submit"><span class="fas fa-save"> </span> Save
