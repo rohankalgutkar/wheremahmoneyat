@@ -17,13 +17,13 @@ var getStratSavings = function () {
 var generateStratSavingOutput = function (stratSavingsData) {
     var output = "";
 
-    templateStart = '<div><blockquote> <ul class="alt"> <li> <span class="fas fa-piggy-bank"></span> <p class="p-margin"> '
-    templateTotalAmt = '</p> <div class="stick-right"> <span class="fas fa-money-bill-wave"></span> ₹'
+    templateStart = '<blockquote> <ul class="alt"> <li> <span class="fas fa-piggy-bank"></span> <p class="p-margin">'
+    templateTotalAmt = '</p> <div class="stick-right"><span class="fas fa-money-bill-wave"></span> ₹'
     templateCurrentAmt = '</div> </li> <li> <span class="fas fa-hand-holding-usd"></span> <p class="p-margin"> ₹'
-    templatePendingAmt = '</p> <span class="tbspl fas fa-comment-dollar"></span> ₹'
-    templateEMIdone = '<div class="stick-right"> <span class="tbspl fas fa-hashtag"></span> '
+    templatePendingAmt = '</p> <span class="tbspl fas fa-comment-dollar"></span> <p class="p-margin"> ₹'
+    templateEMIdone = '</p> <div class="stick-right"> <span class="tbspl fas fa-hashtag"></span> '
     templateEMIleft = '<span class="p-margin fas fa-chart-line"></span> '
-    templateEnd = '</div> </li> </ul> </blockquote></div>'
+    templateEnd = '</div> </li> </ul> </blockquote>'
     _.each(stratSavingsData, (stratSaving) => {
         var pending_amt = Number(stratSaving.goal_amount - stratSaving.current_amount).toLocaleString('en')
         var goal_amount = Number(stratSaving.goal_amount).toLocaleString('en')
