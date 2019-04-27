@@ -16,6 +16,14 @@ const StrategicSavingHeader = mongoose.model('StrategicSavingHeader', {
     }
 })
 
+const BankAccount = mongoose.model('BankAccount', {
+    acc_name: String,
+    current_amount: Number,
+    acc_type: String
+})
+
+
 module.exports = {
-    StrategicSavingHeader
+    StrategicSavingHeader,
+    BankAccount
 }

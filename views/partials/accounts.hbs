@@ -1,3 +1,59 @@
+{{!-- Accounts --}}
 <article id="accounts">
-    <h2 class="major">Accounts</h2>
+    <h1 class="major">Accounts</h1>
+    <a href="#add-new-acc" class="button back-btn icon fa-plus">Add New</a>
+
+    <div>
+        Liquid <code>₹{{#if liquid_asset_tot}}{{liquid_asset_tot}}{{else}}0{{/if}}</code>
+        Fixed <code>₹{{#if fixed_asset_tot}}{{fixed_asset_tot}}{{else}}0{{/if}}</code>
+        Total <code>₹{{#if assets_total}}{{assets_total}}{{else}}0{{/if}}</code>
+    </div>
+
+    <section style="margin-top: 1rem">
+        {{#unless assets_total}}
+        <p class="not-set-up"><span class="fas fa-exclamation-circle"></span> You have no Accounts set up.</p>
+        {{/unless}}
+    </section>
+
+    <a href="#" class="button back-btn icon fa-arrow-left">Back</a>
+    <a href="#add-new-acc" class="button back-btn icon fa-plus">Add New</a>
+
+</article>
+
+{{!-- Add new Account --}}
+<article id="add-new-acc">
+    <h3 class="major">Add Account</h3>
+    <section style="margin-top: 1rem">
+        <form method="post" action="/add-account">
+            <div class="fields">
+                <div class="field half first">
+                    <label for="name">Account Name</label>
+                    <input type="text" name="acc_name" id="acc_name" />
+                </div>
+                <div class="field half">
+                    <label for="current_amount">Initial Amount</label>
+                    <input type="text" name="current_amount" id="current_amount" />
+                </div>
+                <div class="field half">
+                    <input type="radio" value="liquid" id="acc_type" name="acc_type" checked="">
+                    <label for="liquid">Liquid</label>
+                </div>
+                <div class="field half">
+                    <input type="radio" value="fixed" id="acc_type" name="acc_type">
+                    <label for="fixed">Fixed</label>
+                </div>
+                <div class="field half form-btn">
+                    <button type="submit"><span class="fas fa-save"> </span> Save
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+    <a href="#goals" class="button back-btn icon fa-arrow-left">Back</a>
+</article>
+
+{{!-- Okay --}}
+<article id="accounts-okay">
+    <h2 class="major">Success</h2>
+    <a href="#accounts" class="button back-btn icon fa-check">Continue</a>
 </article>

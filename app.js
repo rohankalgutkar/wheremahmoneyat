@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const port = process.env.PORT || 3000;
 // var data = require('./dummy-data.json')
 var StrategicSaving = require('./StrategicSaving.js')
+var Accounts = require('./Accounts.js')
 
 // Auth
 var cookieParser = require('cookie-parser');
@@ -110,11 +111,19 @@ app.get('/', authenticationMiddleware(), function (req, res) {
     });
 });
 
-// Strategic Savings
+// Add Goal
 app.post('/add-strat-saving', function (req, res) {
     StrategicSaving.addNewStrategicSaving(req.body)
-    res.redirect('/#strat-saving-okay');
+    res.redirect('/#goals-okay');
 })
+
+// Add Account
+app.post('/add-account', function (req, res) {
+    Accounts.addNewAccount(req.body)
+    res.redirect('/#accounts-okay');
+})
+
+
 
 // Auth
 // Logout

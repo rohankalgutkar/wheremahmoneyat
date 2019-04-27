@@ -7,6 +7,11 @@
     </div>
 
     <section style="margin-top: 1rem">
+        {{#unless strat_savings_total}}
+        <p class="not-set-up"><span class="fas fa-exclamation-circle"></span> You have no Strategic Savings set
+            up.</p>
+        {{/unless}}
+
         {{#stratSavingsData strat_savings_data}}{{/stratSavingsData}}
     </section>
     <a href="#" class="button back-btn icon fa-arrow-left">Back</a>
@@ -38,4 +43,10 @@
         </form>
     </section>
     <a href="#goals" class="button back-btn icon fa-arrow-left">Back</a>
+</article>
+
+{{!-- Okay --}}
+<article id="goals-okay">
+    <h2 class="major">Success</h2>
+    <a href="#goals" class="button back-btn icon fa-check">Continue</a>
 </article>
