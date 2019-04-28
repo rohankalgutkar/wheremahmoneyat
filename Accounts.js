@@ -1,21 +1,24 @@
 const mongoose = require('./mongoose.js')
 const _ = require('lodash')
 
-var addNewAccount = function (bankAccountData) {
+var addNewAccount = function (userContext, bankAccountData) {
+    bankAccountData.username = userContext.user;
     const bankAccount = new mongoose.BankAccount(bankAccountData)
     bankAccount.save()
 }
 
-var getBankAccounts = function () {
+var getBankAccounts = function (userContext) {
     var bankAccounts = mongoose.BankAccount;
-    var bankAccountsPromise = bankAccounts.find({}).sort({
+    var bankAccountsPromise = bankAccounts.find({
+        username: userContext.user
+    }).sort({
         date_added: -1
     });
     return bankAccountsPromise;
 }
 
 var getBankAccountsHeader = function (bankAccountData) {
-    console.log('bankAccountData' + bankAccountData);
+    // console.log('bankAccountData' + bankAccountData);
 
     var totalAssets = 0;
     var totalLiquid = 0;
@@ -39,7 +42,7 @@ var getBankAccountsHeader = function (bankAccountData) {
 
 var generateBankAccountsOutput = function (bankAccountsData) {
 
-    console.log('bankAcc in generate' + JSON.stringify(bankAccountsData));
+    // console.log('bankAcc in generate' + JSON.stringify(bankAccountsData));
     var output = "";
 
     var templateStart = '<div class="block block-';

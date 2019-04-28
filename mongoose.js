@@ -7,6 +7,7 @@ mongoose.connect(dbURL, {
 })
 
 const StrategicSavingHeader = mongoose.model('StrategicSavingHeader', {
+    username: String,
     goal_name: String,
     goal_amount: Number,
     current_amount: Number,
@@ -17,6 +18,7 @@ const StrategicSavingHeader = mongoose.model('StrategicSavingHeader', {
 })
 
 const BankAccount = mongoose.model('BankAccount', {
+    username: String,
     acc_name: String,
     current_amount: Number,
     acc_type: String

@@ -27,7 +27,7 @@
 				<div class="inner">
 					<p>Welcome, {{username}}</p>
 					Net Worth <code>₹{{#if net_worth}}{{net_worth}}{{else}}0{{/if}}</code>
-					Debt <code>₹1,15,6000</code> <br>
+					Debt <code>₹{{#if debt_tot}}{{debt_tot}}{{else}}0{{/if}}</code> <br>
 					Liquid <code>₹{{#if liquid_asset_tot}}{{liquid_asset_tot}}{{else}}0{{/if}}</code>
 					Fixed <code>₹{{#if fixed_asset_tot}}{{fixed_asset_tot}}{{else}}0{{/if}}</code>
 				</div>

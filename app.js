@@ -95,12 +95,12 @@ app.get('/login', function (req, res) {
 
 // added authenticationMiddleware Auth
 app.get('/', authenticationMiddleware(), function (req, res) {
-    var stratSavings = StrategicSaving.getStratSavings();
-    var bankAccounts = Accounts.getBankAccounts();
+    var userContext = req.session.passport;
+    var stratSavings = StrategicSaving.getStratSavings(userContext);
+    var bankAccounts = Accounts.getBankAccounts(userContext);
     stratSavings.then((stratSavingsData) => {
 
-        console.log('retrieved goal data ' + stratSavingsData);
-        // console.log('req.session.passport' + req.session.passport);
+        // console.log('retrieved goal data ' + stratSavingsData);
 
         var stratSavingsHeader = StrategicSaving.getStratSavingsHeader(stratSavingsData);
 
@@ -132,13 +132,13 @@ app.get('/', authenticationMiddleware(), function (req, res) {
 
 // Add Goal
 app.post('/add-strat-saving', function (req, res) {
-    StrategicSaving.addNewStrategicSaving(req.body)
+    StrategicSaving.addNewStrategicSaving(req.session.passport, req.body)
     res.redirect('/#goals-okay');
 })
 
 // Add Account
 app.post('/add-account', function (req, res) {
-    Accounts.addNewAccount(req.body)
+    Accounts.addNewAccount(req.session.passport, req.body)
     res.redirect('/#accounts-okay');
 })
 
@@ -154,7 +154,7 @@ app.get('/logout', (req, res) => {
 
 function authenticationMiddleware() {
     return (req, res, next) => {
-        console.log(`req.session.passport.user: ${JSON.stringify(req.session.passport)}`);
+        // console.log(`req.session.passport.user: ${JSON.stringify(req.session.passport)}`);
 
         if (req.isAuthenticated()) return next();
         res.redirect('/login')

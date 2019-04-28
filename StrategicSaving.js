@@ -1,14 +1,17 @@
 const mongoose = require('./mongoose.js')
 const _ = require('lodash')
 
-var addNewStrategicSaving = function (goalData) {
+var addNewStrategicSaving = function (userContext, goalData) {
+    goalData.username = userContext.user;
     const goal = new mongoose.StrategicSavingHeader(goalData)
     goal.save()
 }
 
-var getStratSavings = function () {
+var getStratSavings = function (userContext) {
     var stratSavings = mongoose.StrategicSavingHeader;
-    var stratSavingsPromise = stratSavings.find({}).sort({
+    var stratSavingsPromise = stratSavings.find({
+        username: userContext.user
+    }).sort({
         date_added: -1
     });
     return stratSavingsPromise;
