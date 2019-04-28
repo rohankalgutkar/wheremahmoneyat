@@ -50,6 +50,10 @@ hbs.registerHelper('stratSavingsData', function (strat_savings_data) {
     return StrategicSaving.generateStratSavingOutput(strat_savings_data);
 });
 
+hbs.registerHelper('bankAccountsData', function (bank_acc_data) {
+    return Accounts.generateBankAccountsOutput(bank_acc_data);
+});
+
 // Auth
 passport.use(new localStrategy(
     function (username, password, done) {
@@ -92,22 +96,37 @@ app.get('/login', function (req, res) {
 // added authenticationMiddleware Auth
 app.get('/', authenticationMiddleware(), function (req, res) {
     var stratSavings = StrategicSaving.getStratSavings();
+    var bankAccounts = Accounts.getBankAccounts();
     stratSavings.then((stratSavingsData) => {
 
-        console.log('retrieved data ' + stratSavingsData);
-        console.log('req.session.passport' + req.session.passport);
+        console.log('retrieved goal data ' + stratSavingsData);
+        // console.log('req.session.passport' + req.session.passport);
 
         var stratSavingsHeader = StrategicSaving.getStratSavingsHeader(stratSavingsData);
 
-        res.render('index', {
-            username: req.session.passport.user,
-            currentYear: new Date().getFullYear(),
-            strat_savings_total: stratSavingsHeader.totalStratSavings,
-            strat_savings_count: stratSavingsHeader.stratSavingsCount,
-            strat_savings_data: stratSavingsData
-        })
+        bankAccounts.then((bankAccountsData) => {
+            var bankAccountsHeader = Accounts.getBankAccountsHeader(bankAccountsData);
+
+            res.render('index', {
+                username: req.session.passport.user,
+                currentYear: new Date().getFullYear(),
+                //Dash
+                net_worth: bankAccountsHeader.totalAssets,
+                // Goals
+                strat_savings_total: stratSavingsHeader.totalStratSavings,
+                strat_savings_count: stratSavingsHeader.stratSavingsCount,
+                strat_savings_data: stratSavingsData,
+                // Accounts
+                liquid_asset_tot: bankAccountsHeader.totalLiquid,
+                fixed_asset_tot: bankAccountsHeader.totalFixed,
+                assets_total: bankAccountsHeader.totalAssets,
+                bank_acc_data: bankAccountsData
+            })
+        }).catch((e) => {
+            console.log('Didnt work @ bank acc' + e);
+        });
     }).catch((e) => {
-        console.log('Didnt work' + e);
+        console.log('Didnt work @ goals' + e);
     });
 });
 

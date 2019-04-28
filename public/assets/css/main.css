@@ -381,7 +381,7 @@ code {
 	background: rgba(255, 255, 255, 0.075);
 	border-radius: 4px;
 	font-family: "Source Sans Pro", sans-serif;
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 	margin: 0 0.25rem;
 	padding: 0.25rem 0.65rem;
 }
@@ -1803,4 +1803,32 @@ body.is-preload #footer {
 .not-set-up {
 	margin-top: 1rem;
 	color: #e67e22;
+}
+
+.block {
+	display: inline-block;
+	width: 47%;
+	line-height: 1.75;
+	padding: 0.5rem 0.5rem;
+	border-radius: 4px;
+	font-family: "Source Sans Pro", sans-serif;
+	margin: 0.34rem 0.25rem;
+	/* overflow-x: auto; */
+}
+
+.block p,
+.block h2 {
+	margin: 0;
+}
+
+.block-liquid {
+	background: rgba(46, 204, 113, 0.25);
+}
+
+.block-fixed {
+	background: rgba(52, 152, 219, 0.25);
+}
+
+.inline {
+	display: inline
 }
